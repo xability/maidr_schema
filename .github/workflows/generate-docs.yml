@@ -1,4 +1,4 @@
-name: Generate API Documentation
+name: Convert OpenAPI to HTML
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  generate-docs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,18 +16,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "16"
 
       - name: Install Redoc CLI
-        run: npm install -g redoc-cli
+        run: npm install -g @redocly/cli
 
-      - name: Generate API documentation
-        run: redoc-cli bundle ./api/latest.yaml -o ./docs/index.html
+      - name: Create docs directory if it doesn't exist
+        run: mkdir -p docs
+
+      - name: Generate HTML from OpenAPI YAML
+        run: redocly build-docs ./api/latest.yaml -o ./docs/index.html
 
       - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add ./docs/index.html
-          git commit -m 'docs(api): generate HTML documentation from OpenAPI spec'
-          git push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          force: true
