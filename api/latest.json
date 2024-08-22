@@ -1,0 +1,157 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Multi Panel Schema API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/maidr-metadata": {
+      "get": {
+        "summary": "Get multi-panel schema",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiPanelSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MaidrSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "container-figure-id"
+          },
+          "selector": {
+            "type": "string",
+            "example": ""
+          },
+          "layout": {
+            "type": "object",
+            "properties": {
+              "rows": {
+                "type": "integer",
+                "example": 3
+              },
+              "columns": {
+                "type": "integer",
+                "example": 2
+              }
+            }
+          },
+          "title": {
+            "type": "string",
+            "example": "Penguin Bill Dimensions by Species and Sex"
+          },
+          "axes": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "example": "Bill Length (mm)"
+                  }
+                }
+              },
+              "y": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "example": "Bill Depth (mm)"
+                  }
+                }
+              }
+            }
+          },
+          "panels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "panel-01"
+                },
+                "selector": {
+                  "type": "string",
+                  "example": ""
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Specifies the type of the item, e.g., 'point', 'bar', or 'line'.",
+                  "enum": [
+                    "bar",
+                    "hist",
+                    "heat",
+                    "box",
+                    "point",
+                    "line",
+                    "stacked",
+                    "dodged"
+                  ],
+                  "example": "point"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Adelie - Female"
+                },
+                "axes": {
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "example": "Bill Length (mm)"
+                        }
+                      }
+                    },
+                    "y": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "example": "Bill Depth (mm)"
+                        }
+                      }
+                    }
+                  }
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "example": 39.5
+                      },
+                      "y": {
+                        "type": "number",
+                        "example": 17.4
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
