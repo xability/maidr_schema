@@ -25,7 +25,7 @@ jobs:
         run: mkdir -p docs
 
       - name: Generate HTML from OpenAPI YAML
-        run: redocly build-docs ./api/latest.yaml -o ./docs/index.html
+        run: redocly build-docs ./api/latest.json -o ./docs/index.html
 
       - name: Commit and push changes
         run: |
