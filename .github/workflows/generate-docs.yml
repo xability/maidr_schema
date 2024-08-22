@@ -28,8 +28,13 @@ jobs:
         run: redocly build-docs ./api/latest.yaml -o ./docs/index.html
 
       - name: Commit and push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          force: true
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs/index.html
+          git commit -m 'docs(api): generate HTML documentation from OpenAPI spec'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          
