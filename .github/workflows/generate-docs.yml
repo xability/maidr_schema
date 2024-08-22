@@ -37,4 +37,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          
+      - name: Remove local HTML file
+        run: rm ./docs/index.htm
