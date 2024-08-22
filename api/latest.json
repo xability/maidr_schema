@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "MAIDR Schema API",
+    "title": "Test MAIDR Schema API",
     "version": "1.0.0"
   },
   "paths": {

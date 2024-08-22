@@ -1,4 +1,4 @@
-name: Convert OpenAPI to HTML
+name: Convert OpenAPI to HTML and Deploy to GitHub Pages
 
 on:
   push:
@@ -21,21 +21,15 @@ jobs:
       - name: Install Redoc CLI
         run: npm install -g @redocly/cli
 
-      - name: Create docs directory if it doesn't exist
-        run: mkdir -p docs
-
-      - name: Generate HTML from OpenAPI YAML
+      - name: Generate HTML from OpenAPI JSON
         run: redocly build-docs ./api/latest.json -o ./docs/index.html
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add docs/index.html
-          git commit -m 'docs(api): generate HTML documentation from OpenAPI spec'
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload HTML Artifacts
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./docs
 
-      - name: Remove local HTML file
-        run: rm -rf ./docs/
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
