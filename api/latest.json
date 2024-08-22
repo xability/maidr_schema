@@ -14,7 +14,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MultiPanelSchema"
+                  "$ref": "#/components/schemas/MaidrSchema"
                 }
               }
             }
