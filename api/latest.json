@@ -30,51 +30,40 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "container-figure-id"
+            "example": "figure-id"
           },
-          "selector": {
+          "library": {
             "type": "string",
-            "example": ""
+            "example": "matplotlib"
+          },
+          "coordinate": {
+            "type": "string",
+            "example": "cartesian"
           },
           "layout": {
             "type": "object",
             "properties": {
               "rows": {
                 "type": "integer",
-                "example": 3
+                "example": 2
               },
               "columns": {
                 "type": "integer",
-                "example": 2
+                "example": 3
               }
             }
           },
           "title": {
             "type": "string",
-            "example": "Penguin Bill Dimensions by Species and Sex"
+            "example": "figure-title"
           },
-          "axes": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "type": "string",
-                    "example": "Bill Length (mm)"
-                  }
-                }
-              },
-              "y": {
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "type": "string",
-                    "example": "Bill Depth (mm)"
-                  }
-                }
-              }
-            }
+          "subtitle": {
+            "type": "string",
+            "example": "R-figure-subtitle"
+          },
+          "caption": {
+            "type": "string",
+            "example": "R-figure-caption"
           },
           "panels": {
             "type": "array",
@@ -83,66 +72,90 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "example": "panel-01"
-                },
-                "selector": {
-                  "type": "string",
-                  "example": ""
-                },
-                "type": {
-                  "type": "string",
-                  "description": "Specifies the type of the item, e.g., 'point', 'bar', or 'line'.",
-                  "enum": [
-                    "bar",
-                    "hist",
-                    "heat",
-                    "box",
-                    "point",
-                    "line",
-                    "stacked",
-                    "dodged"
-                  ],
-                  "example": "point"
+                  "example": "panel-id"
                 },
                 "title": {
                   "type": "string",
-                  "example": "Adelie - Female"
+                  "example": "panel-title"
                 },
                 "axes": {
                   "type": "object",
                   "properties": {
                     "x": {
-                      "type": "object",
-                      "properties": {
-                        "label": {
-                          "type": "string",
-                          "example": "Bill Length (mm)"
-                        }
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "x-axis"
                       }
                     },
                     "y": {
-                      "type": "object",
-                      "properties": {
-                        "label": {
-                          "type": "string",
-                          "example": "Bill Depth (mm)"
-                        }
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "y-axis"
+                      }
+                    },
+                    "z": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "z-axis"
                       }
                     }
                   }
                 },
-                "data": {
+                "legend": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "example": {
+                    "gentoo": "red",
+                    "adelie": "green"
+                  }
+                },
+                "layers": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "x": {
-                        "type": "number",
-                        "example": 39.5
+                      "type": {
+                        "type": "string",
+                        "description": "Layer type, e.g., 'bar', 'line', 'scatter', etc.",
+                        "enum": [
+                          "bar",
+                          "hist",
+                          "heat",
+                          "box",
+                          "point",
+                          "line",
+                          "stacked",
+                          "dodged"
+                        ],
+                        "example": "layer-type"
                       },
-                      "y": {
-                        "type": "number",
-                        "example": 17.4
+                      "selector": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "selectors"
+                        }
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "type": "number",
+                              "example": 39.5
+                            },
+                            "y": {
+                              "type": "number",
+                              "example": 17.4
+                            }
+                          }
+                        }
                       }
                     }
                   }
