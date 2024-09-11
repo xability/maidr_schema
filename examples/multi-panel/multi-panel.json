@@ -1,6 +1,6 @@
 {
   "id": "figure-id",
-  "library": "Seaborn",
+  "library": "seaborn",
   "coordinate": "cartesian",
   "layout": {
     "rows": 3,
