@@ -82,25 +82,16 @@
                   "type": "object",
                   "properties": {
                     "x": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "x-axis"
-                      }
+                      "type": "string",
+                      "example": "x-axis"
                     },
                     "y": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "y-axis"
-                      }
+                      "type": "string",
+                      "example": "y-axis"
                     },
                     "z": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "z-axis"
-                      }
+                      "type": "string",
+                      "example": "z-axis"
                     }
                   }
                 },

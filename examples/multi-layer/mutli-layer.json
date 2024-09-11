@@ -1,0 +1,66 @@
+{
+  "id": "figure-id",
+  "library": "Seaborn",
+  "coordinate": "cartesian",
+  "layout": {
+    "rows": 1,
+    "columns": 1
+  },
+  "title": "Average Bill and Tip by Day of Week",
+  "panels": [
+    {
+      "id": "panel-01",
+      "title": "Bar and Line Chart",
+      "axes": {
+        "x": "Day of the Week",
+        "y": "Amount in USD"
+      },
+      "layers": [
+        {
+          "type": "bar",
+          "selector": [],
+          "data": [
+            {
+              "x": "Thur",
+              "y": 17.68
+            },
+            {
+              "x": "Fri",
+              "y": 17.15
+            },
+            {
+              "x": "Sat",
+              "y": 20.44
+            },
+            {
+              "x": "Sun",
+              "y": 21.41
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "selector": [],
+          "data": [
+            {
+              "x": "Thur",
+              "y": 2.77
+            },
+            {
+              "x": "Fri",
+              "y": 2.73
+            },
+            {
+              "x": "Sat",
+              "y": 2.99
+            },
+            {
+              "x": "Sun",
+              "y": 3.26
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
